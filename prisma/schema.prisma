@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AssetCondition {
+  NEW
+  GOOD
+  FAIR
+  POOR
+}
+
+enum AssetStatus {
+  AVAILABLE
+  RESERVED
+  ALLOCATED
+  MAINTENANCE
+  LOST
+  RETIRED
+  DISPOSED
+}
+
+enum AllocationStatus {
+  ACTIVE
+  RETURNED
+  TRANSFER_PENDING
+}
+
+enum BookingStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+model AssetCategory {
+  id Int @id @default(autoincrement())
+
+  name String @unique
+
+  description String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  assets Asset[]
+}
+
+model Asset {
+  id Int @id @default(autoincrement())
+
+  assetTag String @unique
+
+  assetName String
+
+  serialNumber String? @unique
+
+  description String?
+
+  purchaseDate DateTime?
+
+  purchaseCost Float?
+
+  warrantyExpiry DateTime?
+
+  vendor String?
+
+  location String?
+
+  imageUrl String?
+
+  documentUrl String?
+
+  qrCodeUrl String?
+
+  condition AssetCondition @default(GOOD)
+
+  status AssetStatus @default(AVAILABLE)
+
+  categoryId Int
+
+  category AssetCategory @relation(fields: [categoryId], references: [id])
+
+  allocations Allocation[]
+
+  bookings Booking[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+}
+
+model Allocation {
+  id Int @id @default(autoincrement())
+
+  assetId Int
+
+  employeeName String
+
+  employeeId String?
+
+  department String
+
+  allocatedDate DateTime @default(now())
+
+  expectedReturnDate DateTime?
+
+  actualReturnDate DateTime?
+
+  status AllocationStatus @default(ACTIVE)
+
+  asset Asset @relation(fields: [assetId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+}
+
+model Booking {
+  id Int @id @default(autoincrement())
+
+  assetId Int
+
+  employeeName String
+
+  employeeId String?
+
+  department String
+
+  startDate DateTime
+
+  endDate DateTime
+
+  purpose String?
+
+  status BookingStatus @default(PENDING)
+
+  asset Asset @relation(fields: [assetId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+}
