@@ -1,0 +1,758 @@
+/* ==========================================
+   ASSETFLOW - LOGIN & SIGNUP STYLESHEET
+   Professional Enterprise Design System
+   ========================================== */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #3b82f6;
+    --secondary-color: #10b981;
+    --accent-color: #f59e0b;
+    --danger-color: #ef4444;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    --text-white: #ffffff;
+    
+    --background-light: #f9fafb;
+    --background-white: #ffffff;
+    --border-color: #e5e7eb;
+    --border-hover: #d1d5db;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ==========================================
+   GLOBAL STYLES
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                 sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   LAYOUT STRUCTURE
+   ========================================== */
+
+.auth-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.branding-panel {
+    flex: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-white);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.auth-panel {
+    flex: 1;
+    background: var(--background-white);
+    padding: 60px 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: slideInRight 0.6s ease-out;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* ==========================================
+   BRANDING SECTION
+   ========================================== */
+
+.logo-section {
+    margin-bottom: 60px;
+}
+
+.logo-placeholder {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.logo-placeholder svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.brand-name {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.brand-tagline {
+    font-size: 14px;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+/* ==========================================
+   FEATURES SECTION
+   ========================================== */
+
+.features-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feature {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.feature:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.feature:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.feature-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.feature h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+}
+
+.feature p {
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   TAB NAVIGATION
+   ========================================== */
+
+.tab-navigation {
+    position: relative;
+    display: flex;
+    margin-bottom: 40px;
+    gap: 0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    position: relative;
+    z-index: 1;
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+}
+
+.tab-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 50%;
+    background: var(--primary-color);
+    border-radius: 2px;
+    transition: left var(--transition-normal);
+}
+
+.tab-btn:nth-child(2).active ~ .tab-indicator {
+    left: 50%;
+}
+
+/* ==========================================
+   FORM STYLES
+   ========================================== */
+
+.form-container {
+    display: none;
+    animation: fadeIn var(--transition-normal);
+}
+
+.form-container.active {
+    display: block;
+}
+
+.form-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ==========================================
+   FORM GROUPS
+   ========================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all var(--transition-fast);
+    background: var(--background-white);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: var(--background-white);
+}
+
+.form-group input::placeholder {
+    color: var(--text-light);
+}
+
+.form-group input[type="text"]:invalid:not(:placeholder-shown),
+.form-group input[type="email"]:invalid:not(:placeholder-shown),
+.form-group input[type="password"]:invalid:not(:placeholder-shown) {
+    border-color: var(--danger-color);
+}
+
+/* ==========================================
+   PASSWORD FIELD
+   ========================================== */
+
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-field input {
+    flex: 1;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* ==========================================
+   ERROR & SUCCESS MESSAGES
+   ========================================== */
+
+.error-message {
+    font-size: 12px;
+    color: var(--danger-color);
+    margin-top: 4px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+    animation: shake 0.3s ease;
+}
+
+.password-hint {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.account-type-notice {
+    background: #f0f9ff;
+    border-left: 4px solid var(--primary-color);
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.account-type-notice strong {
+    color: var(--primary-color);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+    color: var(--text-primary);
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.forgot-password-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.forgot-password-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ==========================================
+   LINKS IN LABELS
+   ========================================== */
+
+.checkbox-label .link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.checkbox-label .link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.submit-btn {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--text-white);
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-md);
+    margin-top: 12px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ==========================================
+   STATUS MESSAGES
+   ========================================== */
+
+.status-message {
+    display: none;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 12px;
+    animation: fadeIn var(--transition-normal);
+}
+
+.status-message.show {
+    display: block;
+}
+
+.status-message.success {
+    background: #f0fdf4;
+    color: var(--success-color);
+    border: 1px solid #bbf7d0;
+}
+
+.status-message.error {
+    background: #fef2f2;
+    color: var(--danger-color);
+    border: 1px solid #fecaca;
+}
+
+.status-message.loading {
+    background: #eff6ff;
+    color: var(--primary-color);
+    border: 1px solid #bfdbfe;
+}
+
+/* ==========================================
+   FORM FOOTER
+   ========================================== */
+
+.form-footer {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 24px;
+}
+
+.switch-form-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.switch-form-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablet - 1024px and below */
+@media (max-width: 1024px) {
+    .auth-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .branding-panel {
+        padding: 40px 30px;
+        min-height: 300px;
+    }
+
+    .auth-panel {
+        padding: 40px 30px;
+        min-height: 100vh;
+    }
+
+    .logo-section {
+        margin-bottom: 40px;
+    }
+
+    .logo-placeholder {
+        width: 50px;
+        height: 50px;
+    }
+
+    .brand-name {
+        font-size: 24px;
+    }
+
+    .features-section {
+        gap: 16px;
+    }
+}
+
+/* Mobile - 768px and below */
+@media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+    }
+
+    .branding-panel {
+        padding: 30px 20px;
+        min-height: 200px;
+    }
+
+    .auth-panel {
+        padding: 30px 20px;
+    }
+
+    .logo-section {
+        margin-bottom: 30px;
+    }
+
+    .logo-placeholder {
+        width: 45px;
+        height: 45px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .brand-tagline {
+        font-size: 12px;
+    }
+
+    .feature h3 {
+        font-size: 13px;
+    }
+
+    .feature p {
+        font-size: 12px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+    }
+
+    .form-subtitle {
+        font-size: 13px;
+    }
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-group input {
+        font-size: 13px;
+        padding: 11px 12px;
+    }
+
+    .submit-btn {
+        font-size: 13px;
+        padding: 11px 14px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .forgot-password-link {
+        align-self: flex-start;
+    }
+}
+
+/* Small Mobile - 480px and below */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .branding-panel {
+        padding: 20px 15px;
+        min-height: 150px;
+    }
+
+    .auth-panel {
+        padding: 20px 15px;
+    }
+
+    .logo-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+
+    .brand-tagline {
+        font-size: 11px;
+    }
+
+    .logo-section {
+        margin-bottom: 20px;
+    }
+
+    .features-section {
+        gap: 12px;
+        display: none;
+    }
+
+    .tab-navigation {
+        margin-bottom: 30px;
+    }
+
+    .form-container h2 {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .form-subtitle {
+        font-size: 12px;
+        margin-bottom: 24px;
+    }
+
+    form {
+        gap: 16px;
+    }
+
+    .form-group {
+        gap: 6px;
+    }
+
+    .form-group input {
+        font-size: 13px;
+        padding: 10px 11px;
+    }
+
+    .tab-btn {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .form-footer {
+        font-size: 12px;
+        margin-top: 16px;
+    }
+}
+
+/* ==========================================
+   ACCESSIBILITY & PRINT STYLES
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .auth-container {
+        flex-direction: column;
+    }
+}
