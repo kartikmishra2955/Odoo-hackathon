@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 // point the proxy target at it (or set VITE_API_BASE_URL directly).
 export default defineConfig({
   plugins: [react()],
-  base: process.env.GITHUB_ACTIONS ? "/assetflow/" : "/",
+  base: "/assetflow/",
   server: {
     proxy: {
       "/api": {
