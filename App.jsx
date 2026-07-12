@@ -16,8 +16,9 @@ export default function App() {
       try {
         const me = await getCurrentUser();
         setUser(me.user ?? me);
-      } catch {
-        // Token invalid/expired — client.js already clears it on 401.
+      } catch (err) {
+        // Token invalid/expired — clear it and show login
+        setUser(null);
       } finally {
         setCheckingSession(false);
       }

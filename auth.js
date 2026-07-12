@@ -1,40 +1,72 @@
 // src/api/auth.js
-import { api, setToken, clearToken } from "./client";
+import { setToken, clearToken } from "./client";
 export { getToken } from "./client";
 
+// Mock user storage
+let mockCurrentUser = null;
+
 /**
- * POST /auth/login
+ * Mock login - accepts any email/password combination
  * body: { email, password }
  * response: { token, user: { id, name, email, role } }
  */
 export async function login({ email, password }) {
-  const data = await api.post("/auth/login", { email, password });
-  if (data?.token) setToken(data.token);
-  return data;
+  if (!email || !password) {
+    throw new Error("Email and password are required");
+  }
+  
+  // Create mock user from email
+  const name = email.split("@")[0];
+  const mockUser = {
+    id: Math.random().toString(36).substr(2, 9),
+    name: name.charAt(0).toUpperCase() + name.slice(1),
+    email,
+    role: "employee",
+  };
+  
+  // Mock token
+  const mockToken = btoa(JSON.stringify(mockUser));
+  setToken(mockToken);
+  mockCurrentUser = mockUser;
+  
+  return { token: mockToken, user: mockUser };
 }
 
 /**
- * POST /auth/register
- * New accounts are always created with role "employee" — Department Head
- * and Asset Manager roles are assigned later by an Admin, so the client
- * never sends a role here.
+ * Mock register - creates new user without API call
  * body: { name, email, password }
  * response: { token, user: { id, name, email, role: "employee" } }
  */
 export async function registerEmployee({ name, email, password }) {
-  const data = await api.post("/auth/register", { name, email, password });
-  if (data?.token) setToken(data.token);
-  return data;
+  if (!name || !email || !password) {
+    throw new Error("Name, email, and password are required");
+  }
+  
+  const mockUser = {
+    id: Math.random().toString(36).substr(2, 9),
+    name,
+    email,
+    role: "employee",
+  };
+  
+  const mockToken = btoa(JSON.stringify(mockUser));
+  setToken(mockToken);
+  mockCurrentUser = mockUser;
+  
+  return { token: mockToken, user: mockUser };
 }
 
 /**
- * GET /auth/me
- * Rehydrates the current user from a stored token (e.g. on app load / refresh).
+ * Mock getCurrentUser - retrieves from mock storage
  */
 export async function getCurrentUser() {
-  return api.get("/auth/me");
+  if (mockCurrentUser) {
+    return { user: mockCurrentUser };
+  }
+  throw new Error("No user logged in");
 }
 
 export function logout() {
   clearToken();
+  mockCurrentUser = null;
 }
