@@ -1,26 +1,23 @@
 const express = require("express");
-
 const router = express.Router();
 
-// Create maintenance request
-router.post("/");
+const {
+  createMaintenanceRequest,
+  getAllMaintenanceRequests,
+  getMaintenanceById,
+  approveMaintenance,
+  rejectMaintenance,
+  startMaintenance,
+  resolveMaintenance
+} = require("../controllers/maintenance.controller");
 
-// Get all maintenance requests
-router.get("/");
+router.post("/", createMaintenanceRequest);
+router.get("/", getAllMaintenanceRequests);
+router.get("/:id", getMaintenanceById);
 
-// Get maintenance by id
-router.get("/:id");
-
-// Approve maintenance request
-router.put("/:id/approve");
-
-// Reject maintenance request
-router.put("/:id/reject");
-
-// Start maintenance work
-router.put("/:id/start");
-
-// Resolve maintenance request
-router.put("/:id/resolve");
+router.put("/:id/approve", approveMaintenance);
+router.put("/:id/reject", rejectMaintenance);
+router.put("/:id/start", startMaintenance);
+router.put("/:id/resolve", resolveMaintenance);
 
 module.exports = router;
