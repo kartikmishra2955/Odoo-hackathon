@@ -1,6 +1,5 @@
-// src/components/Login.jsx
 import { useState } from "react";
-import { login, registerEmployee } from "../api/auth";
+import { login, registerEmployee } from "./auth";
 
 const BrandMark = () => (
   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-[#2E5FCC]">

@@ -1,7 +1,6 @@
-// src/lib/deriveDashboard.js
-import { getAssets } from "../api/assets";
-import { getAllocations } from "../api/allocation";
-import { getBookings } from "../api/booking";
+import { getAssets } from "./assets";
+import { getAllocations } from "./allocation";
+import { getBookings } from "./booking";
 import { rankAssetsByRisk } from "./ari";
 
 /**

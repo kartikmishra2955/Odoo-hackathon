@@ -1,16 +1,12 @@
-// src/App.jsx
 import { useEffect, useState } from "react";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import { getToken, logout } from "./api/auth";
-import { getCurrentUser } from "./api/auth";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
+import { getToken, logout, getCurrentUser } from "./auth";
 
 export default function App() {
   const [user, setUser] = useState(null);
   const [checkingSession, setCheckingSession] = useState(true);
 
-  // On load, if a JWT is already stored, try to rehydrate the session
-  // instead of bouncing the user back to the login screen.
   useEffect(() => {
     async function restoreSession() {
       if (!getToken()) {

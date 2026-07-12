@@ -1,5 +1,6 @@
 // src/api/auth.js
 import { api, setToken, clearToken } from "./client";
+export { getToken } from "./client";
 
 /**
  * POST /auth/login
