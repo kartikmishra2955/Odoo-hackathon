@@ -3,223 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AssetFlow - Login & Signup</title>
+    <title>AssetFlow | Login & Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@200;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="auth-container">
-        <!-- Left Panel: Branding -->
-        <div class="branding-panel">
-            <div class="logo-section">
-                <!-- Placeholder Logo -->
-                <div class="logo-placeholder">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="#fff" stroke-width="2"/>
-                        <rect x="60" y="10" width="30" height="30" fill="none" stroke="#fff" stroke-width="2"/>
-                        <rect x="10" y="60" width="30" height="30" fill="none" stroke="#fff" stroke-width="2"/>
-                        <rect x="60" y="60" width="30" height="30" fill="none" stroke="#fff" stroke-width="2"/>
-                        <line x1="25" y1="25" x2="75" y2="75" stroke="#fff" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h1 class="brand-name">AssetFlow</h1>
-                <p class="brand-tagline">Enterprise Asset & Resource Management System</p>
-            </div>
+<body class="bg-[#050505] text-white font-inter overflow-x-hidden selection:bg-[#ef233c] selection:text-white">
+    <div class="relative min-h-screen overflow-hidden">
+        <!-- Background layers -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(239,35,60,0.18),transparent_35%)] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(180deg,#030405_0%,rgba(3,4,5,0.92)_36%,#020202_100%)] pointer-events-none"></div>
+        <div class="absolute inset-0 opacity-80 bg-[linear-gradient(135deg,rgba(239,35,60,0.03)_0%,transparent_30%,rgba(255,255,255,0.02)_100%)] pointer-events-none"></div>
+        <div class="stars-1 animate-animStar pointer-events-none"></div>
+        <div class="stars-2 animate-animStarSlow pointer-events-none"></div>
+        <div class="gradient-blur pointer-events-none"></div>
 
-            <div class="features-section">
-                <div class="feature">
-                    <span class="feature-icon">📊</span>
-                    <h3>Streamlined Asset Management</h3>
-                    <p>Track and manage all your assets in one centralized platform</p>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 py-8">
+            <header class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <a href="#" class="flex items-center gap-3">
+                    <span class="w-12 h-12 rounded-3xl bg-[#ef233c] grid place-items-center shadow-[0_0_30px_rgba(239,35,60,0.35)]">
+                        <span class="block w-4 h-4 bg-black rotate-45"></span>
+                    </span>
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.45em] text-zinc-400">AssetFlow</p>
+                        <p class="text-xl font-semibold tracking-tight font-manrope">Asset & Resource ERP</p>
+                    </div>
+                </a>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+                    <a href="#" class="hover:text-white transition-colors">Overview</a>
+                    <a href="#" class="hover:text-white transition-colors">Security</a>
+                    <a href="#" class="hover:text-white transition-colors">Support</a>
                 </div>
-                <div class="feature">
-                    <span class="feature-icon">🔒</span>
-                    <h3>Enterprise-Grade Security</h3>
-                    <p>Your data is protected with industry-standard security protocols</p>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">⚡</span>
-                    <h3>Real-Time Insights</h3>
-                    <p>Access comprehensive dashboards and reports instantly</p>
-                </div>
-            </div>
-        </div>
+            </header>
 
-        <!-- Right Panel: Auth Forms -->
-        <div class="auth-panel">
-            <!-- Tab Navigation -->
-            <div class="tab-navigation">
-                <button class="tab-btn active" data-tab="login">Login</button>
-                <button class="tab-btn" data-tab="signup">Signup</button>
-                <div class="tab-indicator"></div>
-            </div>
-
-            <!-- Login Form -->
-            <div class="form-container active" id="login-form">
-                <h2>Welcome Back</h2>
-                <p class="form-subtitle">Sign in to your account to continue</p>
-
-                <form id="loginForm">
-                    <!-- Email Field -->
-                    <div class="form-group">
-                        <label for="login-email">Email Address</label>
-                        <input 
-                            type="email" 
-                            id="login-email" 
-                            name="email" 
-                            placeholder="you@company.com" 
-                            required
-                        >
-                        <span class="error-message" id="login-email-error"></span>
+            <main class="grid gap-12 lg:grid-cols-[1.2fr_0.95fr] items-center py-16 lg:py-24">
+                <section class="space-y-10">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-[#ffccd9] backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-[#ef233c] animate-ping-slow"></span>
+                        Enterprise-ready access control
                     </div>
 
-                    <!-- Password Field -->
-                    <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <div class="password-field">
-                            <input 
-                                type="password" 
-                                id="login-password" 
-                                name="password" 
-                                placeholder="Enter your password" 
-                                required
-                            >
-                            <button 
-                                type="button" 
-                                class="toggle-password" 
-                                onclick="togglePasswordVisibility('login-password')"
-                                title="Show/Hide Password"
-                            >
-                                👁️
-                            </button>
+                    <div class="space-y-6">
+                        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.02] font-manrope text-white">
+                            Sign in to <span class="text-[#ef233c]">AssetFlow</span> with a premium red-noir experience.
+                        </h1>
+                        <p class="max-w-2xl text-lg leading-8 text-zinc-400">
+                            Fast, secure employee onboarding and access management for asset and resource teams. Designed to feel modern, focused, and enterprise-grade.
+                        </p>
+                    </div>
+
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="rounded-[32px] border border-white/10 bg-white/5 p-6 shadow-[0_30px_80px_-55px_rgba(239,35,60,0.7)]">
+                            <p class="text-sm uppercase tracking-[0.35em] text-zinc-400">Built for teams</p>
+                            <p class="mt-4 text-white text-base font-semibold">Employee accounts only — no role selection at signup.</p>
                         </div>
-                        <span class="error-message" id="login-password-error"></span>
-                    </div>
-
-                    <!-- Remember Me & Forgot Password -->
-                    <div class="form-options">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="remember-me">
-                            <span>Remember me</span>
-                        </label>
-                        <a href="#" class="forgot-password-link">Forgot Password?</a>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="submit-btn">Sign In</button>
-
-                    <!-- Status Message -->
-                    <div class="status-message" id="login-status"></div>
-                </form>
-
-                <p class="form-footer">
-                    Don't have an account? <a href="#" class="switch-form-link" data-tab="signup">Create one</a>
-                </p>
-            </div>
-
-            <!-- Signup Form -->
-            <div class="form-container" id="signup-form">
-                <h2>Create Account</h2>
-                <p class="form-subtitle">Join AssetFlow and start managing your assets</p>
-
-                <form id="signupForm">
-                    <!-- Name Field -->
-                    <div class="form-group">
-                        <label for="signup-name">Full Name</label>
-                        <input 
-                            type="text" 
-                            id="signup-name" 
-                            name="name" 
-                            placeholder="John Doe" 
-                            required
-                        >
-                        <span class="error-message" id="signup-name-error"></span>
-                    </div>
-
-                    <!-- Email Field -->
-                    <div class="form-group">
-                        <label for="signup-email">Email Address</label>
-                        <input 
-                            type="email" 
-                            id="signup-email" 
-                            name="email" 
-                            placeholder="you@company.com" 
-                            required
-                        >
-                        <span class="error-message" id="signup-email-error"></span>
-                    </div>
-
-                    <!-- Password Field -->
-                    <div class="form-group">
-                        <label for="signup-password">Password</label>
-                        <div class="password-field">
-                            <input 
-                                type="password" 
-                                id="signup-password" 
-                                name="password" 
-                                placeholder="Minimum 8 characters" 
-                                required
-                            >
-                            <button 
-                                type="button" 
-                                class="toggle-password" 
-                                onclick="togglePasswordVisibility('signup-password')"
-                                title="Show/Hide Password"
-                            >
-                                👁️
-                            </button>
+                        <div class="rounded-[32px] border border-white/10 bg-white/5 p-6 shadow-[0_30px_80px_-55px_rgba(239,35,60,0.45)]">
+                            <p class="text-sm uppercase tracking-[0.35em] text-zinc-400">Secure by default</p>
+                            <p class="mt-4 text-white text-base font-semibold">Email validation, password confirmation, and polished enterprise UX.</p>
                         </div>
-                        <span class="error-message" id="signup-password-error"></span>
-                        <p class="password-hint">Must be at least 8 characters long</p>
+                    </div>
+                </section>
+
+                <section class="rounded-[40px] border border-white/10 bg-white/5 p-8 shadow-[0_40px_120px_-70px_rgba(0,0,0,0.75)] backdrop-blur-xl">
+                    <div class="flex items-center gap-1 rounded-full bg-[#ffffff0d] p-1 border border-white/10">
+                        <button class="tab-btn flex-1 rounded-full px-5 py-3 text-sm font-semibold transition-colors active" data-tab="login">Login</button>
+                        <button class="tab-btn flex-1 rounded-full px-5 py-3 text-sm font-semibold transition-colors" data-tab="signup">Signup</button>
                     </div>
 
-                    <!-- Confirm Password Field -->
-                    <div class="form-group">
-                        <label for="signup-confirm-password">Confirm Password</label>
-                        <div class="password-field">
-                            <input 
-                                type="password" 
-                                id="signup-confirm-password" 
-                                name="confirm-password" 
-                                placeholder="Re-enter your password" 
-                                required
-                            >
-                            <button 
-                                type="button" 
-                                class="toggle-password" 
-                                onclick="togglePasswordVisibility('signup-confirm-password')"
-                                title="Show/Hide Password"
-                            >
-                                👁️
-                            </button>
+                    <div class="mt-10 space-y-8">
+                        <div class="form-container active" id="login-form">
+                            <div class="space-y-3">
+                                <h2 class="text-3xl font-semibold font-manrope">Welcome back</h2>
+                                <p class="text-sm text-zinc-400">Enter your credentials to access AssetFlow.</p>
+                            </div>
+
+                            <form id="loginForm" class="space-y-6 mt-6">
+                                <div class="space-y-2">
+                                    <label for="login-email" class="text-sm font-medium text-zinc-300">Email address</label>
+                                    <input id="login-email" name="email" type="email" placeholder="you@company.com" class="w-full rounded-3xl border border-white/10 bg-[#070708] px-5 py-4 text-white placeholder:text-zinc-500 focus:border-[#ef233c] focus:outline-none focus:ring-2 focus:ring-[#ef233c]/20" required>
+                                    <p class="error-message text-sm text-[#f87171]" id="login-email-error"></p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between text-sm text-zinc-300">
+                                        <label for="login-password" class="font-medium">Password</label>
+                                        <a href="#" class="forgot-password-link text-[#ef233c] hover:text-[#ff7fa2] transition-colors">Forgot Password?</a>
+                                    </div>
+                                    <div class="relative">
+                                        <input id="login-password" name="password" type="password" placeholder="Enter your password" class="w-full rounded-3xl border border-white/10 bg-[#070708] px-5 py-4 pr-14 text-white placeholder:text-zinc-500 focus:border-[#ef233c] focus:outline-none focus:ring-2 focus:ring-[#ef233c]/20" required>
+                                        <button type="button" onclick="togglePasswordVisibility('login-password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition-colors" aria-label="Show password">👁️</button>
+                                    </div>
+                                    <p class="error-message text-sm text-[#f87171]" id="login-password-error"></p>
+                                </div>
+
+                                <div class="flex items-center justify-between text-sm text-zinc-400">
+                                    <label class="inline-flex items-center gap-3">
+                                        <input type="checkbox" name="remember-me" class="h-4 w-4 rounded border-white/10 bg-[#070708] text-[#ef233c] focus:ring-[#ef233c]/50">
+                                        <span>Remember me</span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="w-full rounded-3xl bg-[#ef233c] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#ff4a6d]">Login</button>
+                                <p class="status-message text-sm" id="login-status"></p>
+                            </form>
+
+                            <p class="mt-4 text-sm text-zinc-400">Don’t have an account? <a href="#" class="switch-form-link text-[#ef233c] hover:text-[#ff7fa2]">Signup</a></p>
                         </div>
-                        <span class="error-message" id="signup-confirm-password-error"></span>
+
+                        <div class="form-container" id="signup-form">
+                            <div class="space-y-3">
+                                <h2 class="text-3xl font-semibold font-manrope">Create an account</h2>
+                                <p class="text-sm text-zinc-400">Start your AssetFlow journey with a secure employee account.</p>
+                            </div>
+
+                            <form id="signupForm" class="space-y-6 mt-6">
+                                <div class="space-y-2">
+                                    <label for="signup-name" class="text-sm font-medium text-zinc-300">Full name</label>
+                                    <input id="signup-name" name="name" type="text" placeholder="John Doe" class="w-full rounded-3xl border border-white/10 bg-[#070708] px-5 py-4 text-white placeholder:text-zinc-500 focus:border-[#ef233c] focus:outline-none focus:ring-2 focus:ring-[#ef233c]/20" required>
+                                    <p class="error-message text-sm text-[#f87171]" id="signup-name-error"></p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label for="signup-email" class="text-sm font-medium text-zinc-300">Email address</label>
+                                    <input id="signup-email" name="email" type="email" placeholder="you@company.com" class="w-full rounded-3xl border border-white/10 bg-[#070708] px-5 py-4 text-white placeholder:text-zinc-500 focus:border-[#ef233c] focus:outline-none focus:ring-2 focus:ring-[#ef233c]/20" required>
+                                    <p class="error-message text-sm text-[#f87171]" id="signup-email-error"></p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label for="signup-password" class="text-sm font-medium text-zinc-300">Password</label>
+                                    <div class="relative">
+                                        <input id="signup-password" name="password" type="password" placeholder="Minimum 8 characters" class="w-full rounded-3xl border border-white/10 bg-[#070708] px-5 py-4 pr-14 text-white placeholder:text-zinc-500 focus:border-[#ef233c] focus:outline-none focus:ring-2 focus:ring-[#ef233c]/20" required>
+                                        <button type="button" onclick="togglePasswordVisibility('signup-password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition-colors" aria-label="Show password">👁️</button>
+                                    </div>
+                                    <p class="text-xs text-zinc-500">At least 8 characters</p>
+                                    <p class="error-message text-sm text-[#f87171]" id="signup-password-error"></p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label for="signup-confirm-password" class="text-sm font-medium text-zinc-300">Confirm password</label>
+                                    <div class="relative">
+                                        <input id="signup-confirm-password" name="confirm-password" type="password" placeholder="Re-enter your password" class="w-full rounded-3xl border border-white/10 bg-[#070708] px-5 py-4 pr-14 text-white placeholder:text-zinc-500 focus:border-[#ef233c] focus:outline-none focus:ring-2 focus:ring-[#ef233c]/20" required>
+                                        <button type="button" onclick="togglePasswordVisibility('signup-confirm-password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition-colors" aria-label="Show password">👁️</button>
+                                    </div>
+                                    <p class="error-message text-sm text-[#f87171]" id="signup-confirm-password-error"></p>
+                                </div>
+
+                                <div class="rounded-3xl border border-white/10 bg-[#ffffff05] p-4 text-sm text-zinc-300">
+                                    Your signup will create a standard <span class="text-[#ef233c] font-semibold">Employee</span> account.
+                                </div>
+
+                                <div class="flex items-start gap-3 text-sm text-zinc-300">
+                                    <label class="inline-flex items-center gap-3">
+                                        <input type="checkbox" name="terms" class="h-4 w-4 rounded border-white/10 bg-[#070708] text-[#ef233c] focus:ring-[#ef233c]/50" required>
+                                        <span>I agree to the <a href="#" class="text-[#ef233c] hover:text-[#ff7fa2]">Terms of Service</a> and <a href="#" class="text-[#ef233c] hover:text-[#ff7fa2]">Privacy Policy</a>.</span>
+                                    </label>
+                                </div>
+                                <p class="error-message text-sm text-[#f87171]" id="signup-terms-error"></p>
+
+                                <button type="submit" class="w-full rounded-3xl bg-[#ef233c] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#ff4a6d]">Create account</button>
+                                <p class="status-message text-sm" id="signup-status"></p>
+                            </form>
+
+                            <p class="mt-4 text-sm text-zinc-400">Already have an account? <a href="#" class="switch-form-link text-[#ef233c] hover:text-[#ff7fa2]">Login</a></p>
+                        </div>
                     </div>
-
-                    <!-- Account Type Notice -->
-                    <div class="account-type-notice">
-                        <p>Your account will be created as an <strong>Employee</strong> account.</p>
-                    </div>
-
-                    <!-- Terms & Conditions -->
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="terms" required>
-                            <span>I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a></span>
-                        </label>
-                        <span class="error-message" id="signup-terms-error"></span>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="submit-btn">Create Account</button>
-
-                    <!-- Status Message -->
-                    <div class="status-message" id="signup-status"></div>
-                </form>
-
-                <p class="form-footer">
-                    Already have an account? <a href="#" class="switch-form-link" data-tab="login">Sign in</a>
-                </p>
-            </div>
+                </section>
+            </main>
         </div>
     </div>
 
