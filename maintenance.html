@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance - AssetFlow</title>
+
+    <link rel="stylesheet" href="maintenance.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <h1>AssetFlow</h1>
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="maintenance.html" class="active">Maintenance</a>
+        <a href="audit.html">Audit</a>
+        <a href="risk.html">Risk Assets</a>
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+            <h2>Maintenance Management</h2>
+
+            <button class="create-btn">
+                + Create Request
+            </button>
+        </div>
+
+        <div class="table-box">
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Asset</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+
+                <tr>
+                    <td>MNT-001</td>
+                    <td>Laptop-101</td>
+                    <td><span class="priority high">HIGH</span></td>
+                    <td><span class="status pending">PENDING</span></td>
+
+                    <td>
+                        <button class="action-btn approve">Approve</button>
+                        <button class="action-btn reject">Reject</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MNT-002</td>
+                    <td>Printer-07</td>
+                    <td><span class="priority medium">MEDIUM</span></td>
+                    <td><span class="status progress">IN PROGRESS</span></td>
+
+                    <td>
+                        <button class="action-btn resolve">Resolve</button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="maintenance.js"></script>
+
+</body>
+</html>

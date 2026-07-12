@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assets</title>
+
+    <link rel="stylesheet" href="risk.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <h1>AssetFlow</h1>
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="audit.html">Audit</a>
+        <a href="risk.html" class="active">Risk Assets</a>
+    </div>
+
+    <div class="main">
+
+        <h2 class="title">Risk Asset Monitoring</h2>
+
+        <div class="cards">
+
+            <div class="card critical">
+                <h3>Critical Assets</h3>
+                <h1>3</h1>
+            </div>
+
+            <div class="card high">
+                <h3>High Risk Assets</h3>
+                <h1>8</h1>
+            </div>
+
+            <div class="card warranty">
+                <h3>Warranty Expiring</h3>
+                <h1>12</h1>
+            </div>
+
+            <div class="card health">
+                <h3>Average Health Score</h3>
+                <h1>82%</h1>
+            </div>
+
+        </div>
+
+        <div class="table-box">
+
+            <h2>Critical Asset List</h2>
+
+            <table>
+                <tr>
+                    <th>Asset ID</th>
+                    <th>Asset Name</th>
+                    <th>Risk Level</th>
+                    <th>Health Score</th>
+                </tr>
+
+                <tr>
+                    <td>AST-101</td>
+                    <td>Laptop Fleet</td>
+                    <td><span class="badge critical-badge">CRITICAL</span></td>
+                    <td>35%</td>
+                </tr>
+
+                <tr>
+                    <td>AST-204</td>
+                    <td>Production Printer</td>
+                    <td><span class="badge high-badge">HIGH</span></td>
+                    <td>52%</td>
+                </tr>
+
+                <tr>
+                    <td>AST-301</td>
+                    <td>Server Rack</td>
+                    <td><span class="badge medium-badge">MEDIUM</span></td>
+                    <td>71%</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="risk.js"></script>
+
+</body>
+</html>

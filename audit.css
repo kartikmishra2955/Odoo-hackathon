@@ -1,0 +1,19 @@
+@import url("maintenance.css");
+
+.open{
+    background:#14532d;
+}
+
+.progress{
+    background:#1e3a8a;
+}
+
+.start{
+    background:#2563eb;
+    color:white;
+}
+
+.close{
+    background:#dc2626;
+    color:white;
+}

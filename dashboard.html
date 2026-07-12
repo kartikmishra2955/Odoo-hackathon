@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AssetFlow Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <h1>AssetFlow</h1>
+
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="audit.html">Audit</a>
+        <a href="risk.html">Risk Assets</a>
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+            <h2>Enterprise Dashboard</h2>
+            <p>Welcome back, Asset Manager</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Assets</h3>
+                <h1>256</h1>
+            </div>
+
+            <div class="card">
+                <h3>Pending Maintenance</h3>
+                <h1>7</h1>
+            </div>
+
+            <div class="card">
+                <h3>Open Audits</h3>
+                <h1>4</h1>
+            </div>
+
+            <div class="card">
+                <h3>Critical Assets</h3>
+                <h1>3</h1>
+            </div>
+
+        </div>
+
+        <div class="table-box">
+
+            <h2>Recent Maintenance Requests</h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Asset</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>MNT-001</td>
+                    <td>Laptop-101</td>
+                    <td>HIGH</td>
+                    <td>Pending</td>
+                </tr>
+
+                <tr>
+                    <td>MNT-002</td>
+                    <td>Printer-07</td>
+                    <td>MEDIUM</td>
+                    <td>In Progress</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
