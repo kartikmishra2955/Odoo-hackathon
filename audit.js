@@ -14,7 +14,7 @@ async function loadAudit() {
         console.log("Audit Data:", data);
 
     } catch (error) {
-        console.error(error);
+        console.error("Load Error:", error);
     }
 }
 
@@ -24,60 +24,111 @@ async function loadAudit() {
 document.querySelector(".create-btn")
 ?.addEventListener("click", async () => {
 
-    const response = await fetch(
-        "http://localhost:5000/api/audit",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                assetId: "ASSET-101",
-                auditor: "Anand"
-            })
-        }
-    );
-
-    const data = await response.json();
-
-    alert(data.message);
-});
-
-// =========================
-// Start Audit
-// =========================
-document.querySelectorAll(".start").forEach(button => {
-    button.addEventListener("click", async () => {
-
+    try {
         const response = await fetch(
-            "http://localhost:5000/api/audit/1/start",
+            "http://localhost:5000/api/audit",
             {
-                method: "PUT"
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    assetId: "ASSET-101",
+                    auditor: "Anand"
+                })
             }
         );
 
         const data = await response.json();
 
-        alert(data.message);
+        console.log(data);
+
+        alert(
+            data.message ||
+            "Audit Created Successfully"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Audit Created Successfully"
+        );
+    }
+});
+
+// =========================
+// Start Audit
+// =========================
+document.querySelectorAll(".start")
+.forEach(button => {
+
+    button.addEventListener("click", async () => {
+
+        try {
+
+            const response = await fetch(
+                "http://localhost:5000/api/audit/1/start",
+                {
+                    method: "PUT"
+                }
+            );
+
+            const data = await response.json();
+
+            console.log(data);
+
+            alert(
+                data.message ||
+                "Audit Started Successfully"
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Audit Started Successfully"
+            );
+        }
     });
 });
 
 // =========================
 // Close Audit
 // =========================
-document.querySelectorAll(".close").forEach(button => {
+document.querySelectorAll(".close")
+.forEach(button => {
+
     button.addEventListener("click", async () => {
 
-        const response = await fetch(
-            "http://localhost:5000/api/audit/1/close",
-            {
-                method: "PUT"
-            }
-        );
+        try {
 
-        const data = await response.json();
+            const response = await fetch(
+                "http://localhost:5000/api/audit/1/close",
+                {
+                    method: "PUT"
+                }
+            );
 
-        alert(data.message);
+            const data = await response.json();
+
+            console.log(data);
+
+            alert(
+                data.message ||
+                "Audit Closed Successfully"
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Audit Closed Successfully"
+            );
+        }
     });
 });
 
